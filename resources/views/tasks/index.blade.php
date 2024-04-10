@@ -8,6 +8,8 @@
 <body>
     <h1>タスク</h1>
     <a href="{{ route('tasks.create') }}">タスクを作成</a>
+    <a href="{{ route('tasks.index', ['sort' => 'created_at', 'order' => 'asc']) }}">作成日昇順</a>
+    <a href="{{ route('tasks.index', ['sort' => 'created_at', 'order' => 'desc']) }}">作成日降順</a>
     <ul>
         @foreach ($tasks as $task)
             <li>

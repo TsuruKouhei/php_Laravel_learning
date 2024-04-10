@@ -7,9 +7,14 @@ use App\Models\Task;
 
 class TaskController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::all();
+        $sort = $request->query('sort', 'created_at'); // デフォルトは作成日でソート
+        $order = $request->query('order', 'asc'); // デフォルトは昇順
+
+        // ソートパラメータに基づいてタスクを取得
+        $tasks = Task::orderBy($sort, $order)->get();
+
         return view('tasks.index', compact('tasks'));
     }
 
