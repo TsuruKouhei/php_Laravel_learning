@@ -14,6 +14,7 @@
         @foreach ($tasks as $task)
             <li>
                 {{ $task->name }}
+                {{ $task->deadline ? \Carbon\Carbon::parse($task->deadline)->format('Y-m-d H:i:s') : '未設定' }}
                 <a href="{{ route('tasks.edit', $task->id) }}">編集</a>
                 <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display:inline">
                     @csrf

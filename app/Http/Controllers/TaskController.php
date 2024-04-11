@@ -27,13 +27,14 @@ class TaskController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'deadline' => 'nullable|date', // 日付のバリデーションルールを追加
         ]);
-
+    
         Task::create($request->all());
-
+    
         return redirect()->route('tasks.index')
                         ->with('success', 'Task created successfully.');
-    }
+    }    
 
     public function show(Task $task)
     {
@@ -49,13 +50,14 @@ class TaskController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'deadline' => 'nullable|date', // 日付のバリデーションルールを追加
         ]);
-
+    
         $task->update($request->all());
-
+    
         return redirect()->route('tasks.index')
                         ->with('success', 'Task updated successfully');
-    }
+    }    
 
     public function destroy(Task $task)
     {

@@ -11,6 +11,8 @@
         @method('PUT')
         <label for="name">タスク名:</label>
         <input type="text" name="name" id="name" value="{{ $task->name }}" required>
+        <label for="deadline">期限:</label>
+        <input type="datetime-local" name="deadline" id="deadline" value="{{ old('deadline', $task->deadline ?? '') }}">
         <button type="submit">更新</button>
     </form>
     <a href="{{ route('tasks.index') }}">タスクリストに戻る</a>
