@@ -7,6 +7,7 @@
                 <tr>
                     <th>タスク名</th>
                     <th>期限</th>
+                    <th>ステータス</th>
                     <th>作成日</th>
                     <th>操作</th>
                 </tr>
@@ -16,6 +17,7 @@
                     <tr>
                         <td>{{ $task->name }}</td>
                         <td>{{ $task->deadline ? \Carbon\Carbon::parse($task->deadline)->format('Y-m-d') : '未設定' }}</td>
+                        <td>{{ $task->status }}</td>
                         <td>{{ $task->created_at->format('Y-m-d') }}</td>
                         <td>
                             <a href="{{ route('tasks.edit', $task->id) }}" class="button button-small">編集</a>
