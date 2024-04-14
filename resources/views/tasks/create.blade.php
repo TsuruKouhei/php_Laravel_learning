@@ -18,6 +18,15 @@
             <option value="進行中" {{ $task->status == '進行中' ? 'selected' : '' }}>進行中</option>
             <option value="完了" {{ $task->status == '完了' ? 'selected' : '' }}>完了</option>
         </select>
+        <label for="category_id">カテゴリ:</label>
+        <select name="category_id" id="category_id" class="form-control">
+            <option value="">選択してください</option>
+            @foreach (\App\Models\Category::all() as $category)
+                <option value="{{ $category->id }}" {{ $task->category_id == $category->id ? 'selected' : '' }}>
+                    {{ $category->name }}
+                </option>
+            @endforeach
+        </select>
         <button type="submit">タスクを作成</button>
     </form>
     <a href="{{ route('tasks.index') }}">タスクリストに戻る</a>
