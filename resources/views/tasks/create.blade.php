@@ -12,7 +12,7 @@
         <input type="text" name="name" id="name" required>
         <label for="deadline">期限:</label>
         <input type="datetime-local" name="deadline" id="deadline" value="{{ old('deadline', isset($task) ? $task->deadline : '') }}">
-
+        <label for="status">ステータス:</label>
         <select name="status" id="status" class="form-control">
             <option value="未着" {{ (isset($task) && $task->status == '未着') ? 'selected' : '' }}>未着</option>
             <option value="進行中" {{ (isset($task) && $task->status == '進行中') ? 'selected' : '' }}>進行中</option>
